@@ -1,13 +1,628 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sahil | Premium Interactive Portfolio</title>
+    <meta name="description" content="Discover the professional portfolio of Sahil. Highlighting skills, experience, projects, and education in an interactive web experience.">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
 </head>
 <body>
-    <H1>Hello</H1>
+    <!-- Top Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+    <!-- Background Glow FX -->
+    <div class="glow-bg">
+        <div class="glow-sphere sphere-1"></div>
+        <div class="glow-sphere sphere-2"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="main-header">
+        <div class="header-container container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>
+                <span id="logo-text">Sahil</span>
+                <span class="logo-accent">/&gt;</span>
+            </a>
+            
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="customizer-toggle" class="icon-btn highlight" title="Customize Resume Details" aria-label="Open Customizer">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+                <a href="#contact" class="btn btn-sm btn-outline hide-mobile">Hire Me</a>
+                <button id="mobile-nav-toggle" class="icon-btn hide-desktop" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="mobile-nav-drawer">
+        <button id="mobile-nav-close" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <ul>
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#education" class="mobile-nav-link">Education</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <button id="mobile-customizer-toggle" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-sliders"></i> Customize Details
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content reveal">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span id="hero-badge-text">Available for Opportunities</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Hi, I'm <span id="hero-name" class="gradient-text">Sahil Tonge</span>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        I am a <span id="hero-role-typed"></span><span class="typed-cursor">|</span>
+                    </h2>
+                    <p id="hero-tagline" class="hero-desc">
+                        Crafting highly polished, modern web applications with a focus on clean code, visual excellence, and interactive user experiences.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View My Work</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Get In Touch</span>
+                        </a>
+                        <button id="download-resume-btn" class="btn btn-outline">
+                            <i class="fa-solid fa-download"></i>
+                            <span>Resume</span>
+                        </button>
+                    </div>
+                    <div class="social-links" id="hero-socials">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="hero-visual reveal">
+                    <div class="visual-wrapper">
+                        <!-- Premium Interactive SVG Profile Graphic -->
+                        <div class="avatar-ring-container">
+                            <div class="avatar-ring ring-1"></div>
+                            <div class="avatar-ring ring-2"></div>
+                            <div class="avatar-ring ring-3"></div>
+                            <div class="avatar-holder" id="avatar-container">
+                                <!-- Fallback SVG Avatar -->
+                                <svg class="svg-avatar" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--color-primary)" />
+                                            <stop offset="100%" stop-color="var(--color-secondary)" />
+                                        </linearGradient>
+                                        <clipPath id="avatar-clip">
+                                            <circle cx="50" cy="50" r="46" />
+                                        </clipPath>
+                                    </defs>
+                                    <circle cx="50" cy="50" r="48" stroke="url(#avatar-grad)" stroke-width="2" stroke-dasharray="6 3"/>
+                                    <g clip-path="url(#avatar-clip)">
+                                        <rect width="100" height="100" fill="var(--color-bg-card)" />
+                                        <circle cx="50" cy="38" r="18" fill="url(#avatar-grad)" opacity="0.85"/>
+                                        <path d="M15 88C15 72 30 64 50 64C70 64 85 72 85 88" fill="url(#avatar-grad)" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="tech-tag floating-tag-1"><i class="fa-brands fa-js text-warning"></i> <span>JS</span></div>
+                        <div class="tech-tag floating-tag-2"><i class="fa-brands fa-react text-info"></i> <span>React</span></div>
+                        <div class="tech-tag floating-tag-3"><i class="fa-brands fa-css3-alt text-primary"></i> <span>CSS</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <a href="#about" aria-label="Scroll to About Section">
+                    <span class="mouse-icon">
+                        <span class="wheel"></span>
+                    </span>
+                    <span class="indicator-text">Scroll Down</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About & Skills Section -->
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="subtitle">Get to Know Me</span>
+                    <h2 class="section-title">About Me & Skills</h2>
+                    <div class="section-title-line"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-details reveal">
+                        <h3 class="about-heading">My Story</h3>
+                        <p id="about-bio" class="about-text">
+                            Loading biography details...
+                        </p>
+                        
+                        <div class="about-meta-grid" id="about-info-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="skills-showcase reveal">
+                        <div class="skills-tabs">
+                            <button class="tab-btn active" data-tab="frontend">Frontend</button>
+                            <button class="tab-btn" data-tab="backend">Backend & DB</button>
+                            <button class="tab-btn" data-tab="tools">Tools & Others</button>
+                        </div>
+                        
+                        <div class="skills-tab-content">
+                            <div class="tab-pane active" id="frontend-skills">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="tab-pane" id="backend-skills">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="tab-pane" id="tools-skills">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="experience-section section-padding alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="subtitle">My Journey</span>
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="section-title-line"></div>
+                </div>
+                
+                <div class="timeline-container" id="timeline-container">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid Section -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="subtitle">Portfolio Showcase</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="section-title-line"></div>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="project-filters reveal" id="project-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <!-- Other filters added dynamically or statically -->
+                </div>
+                
+                <!-- Projects Grid -->
+                <div class="projects-grid reveal" id="projects-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education-section section-padding alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="subtitle">Academic Foundation</span>
+                    <h2 class="section-title">Education & Certifications</h2>
+                    <div class="section-title-line"></div>
+                </div>
+                
+                <div class="education-grid" id="education-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="subtitle">Let's Connect</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="section-title-line"></div>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Contact Cards -->
+                    <div class="contact-info reveal">
+                        <h3 class="contact-info-title">Let's discuss something awesome!</h3>
+                        <p class="contact-info-subtitle">I'm always open to discussing web development projects, creative ideas, or opportunities to be part of your vision.</p>
+                        
+                        <div class="contact-cards-container" id="contact-details-container">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="contact-form-container reveal">
+                        <form id="contact-form" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="form-name">Full Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user input-icon"></i>
+                                    <input type="text" id="form-name" placeholder="John Doe" required>
+                                </div>
+                                <span class="error-msg" id="name-error">Please enter your name</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-envelope input-icon"></i>
+                                    <input type="email" id="form-email" placeholder="john@example.com" required>
+                                </div>
+                                <span class="error-msg" id="email-error">Please enter a valid email address</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-subject">Subject</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-pen-nib input-icon"></i>
+                                    <input type="text" id="form-subject" placeholder="Project Inquiry" required>
+                                </div>
+                                <span class="error-msg" id="subject-error">Please enter a subject</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-message">Message</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-message input-icon textarea-icon"></i>
+                                    <textarea id="form-message" rows="5" placeholder="Hi Sahil, I'd love to work with you on..." required></textarea>
+                                </div>
+                                <span class="error-msg" id="message-error">Please write a message</span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block submit-btn" id="form-submit-btn">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-accent">&lt;</span>
+                    <span id="footer-logo-text">Sahil</span>
+                    <span class="logo-accent">/&gt;</span>
+                </a>
+                <p>Building high-quality, pixel-perfect, responsive web solutions with dedication and precision.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-socials">
+                <h4>Connect</h4>
+                <div class="social-links-footer" id="footer-socials-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 <span id="footer-copyright-name">Sahil Tonge</span>. All rights reserved.</p>
+                <p>Designed & Engineered with <i class="fa-solid fa-heart text-danger"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="icon-btn scroll-visible" aria-label="Back to Top" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Live Resume Customizer Sidebar Panel -->
+    <aside id="customizer-panel" class="customizer-panel">
+        <div class="customizer-header">
+            <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
+            <button id="customizer-close" class="close-btn" aria-label="Close Customizer"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="customizer-body">
+            <p class="customizer-help">Update details below to customize this portfolio in real-time. Changes save automatically.</p>
+            
+            <div class="customizer-tabs">
+                <button class="cust-tab-btn active" data-cust-tab="cust-general">General</button>
+                <button class="cust-tab-btn" data-cust-tab="cust-skills">Skills</button>
+                <button class="cust-tab-btn" data-cust-tab="cust-experience">Work</button>
+                <button class="cust-tab-btn" data-cust-tab="cust-projects">Projects</button>
+                <button class="cust-tab-btn" data-cust-tab="cust-education">Education</button>
+            </div>
+            
+            <div class="customizer-tab-content">
+                <!-- General Section -->
+                <div class="cust-tab-pane active" id="cust-general">
+                    <div class="panel-section-title">Personal Details</div>
+                    <div class="cust-form-group">
+                        <label for="cust-name">Full Name</label>
+                        <input type="text" id="cust-name" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-logo">Logo Abbreviation</label>
+                        <input type="text" id="cust-logo" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-roles">Roles / Headline (Comma separated for typing FX)</label>
+                        <input type="text" id="cust-roles" class="cust-input" placeholder="Web Developer, UI Designer">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-avatar">Profile Picture / Avatar Image URL</label>
+                        <input type="text" id="cust-avatar" class="cust-input" placeholder="Leave empty for default SVG avatar">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-tagline">Hero Tagline</label>
+                        <textarea id="cust-tagline" class="cust-input" rows="3"></textarea>
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-bio">About Biography</label>
+                        <textarea id="cust-bio" class="cust-input" rows="5"></textarea>
+                    </div>
+                    
+                    <div class="panel-section-title">Contact & Social Info</div>
+                    <div class="cust-form-group">
+                        <label for="cust-email">Email Address</label>
+                        <input type="email" id="cust-email" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-phone">Phone Number</label>
+                        <input type="text" id="cust-phone" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-location">Location (City, Country)</label>
+                        <input type="text" id="cust-location" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-github">GitHub Profile URL</label>
+                        <input type="url" id="cust-github" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-linkedin">LinkedIn Profile URL</label>
+                        <input type="url" id="cust-linkedin" class="cust-input">
+                    </div>
+                    <div class="cust-form-group">
+                        <label for="cust-twitter">Twitter Profile URL</label>
+                        <input type="url" id="cust-twitter" class="cust-input">
+                    </div>
+                </div>
+                
+                <!-- Skills Section -->
+                <div class="cust-tab-pane" id="cust-skills">
+                    <div class="panel-section-title">Manage Skills</div>
+                    <div class="skills-manager-container">
+                        <div class="cust-form-group-inline">
+                            <div class="flex-column flex-grow">
+                                <label for="new-skill-name">Skill Name</label>
+                                <input type="text" id="new-skill-name" class="cust-input" placeholder="e.g. HTML5">
+                            </div>
+                            <div class="flex-column" style="width: 70px;">
+                                <label for="new-skill-level">Level %</label>
+                                <input type="number" id="new-skill-level" class="cust-input" value="85" min="1" max="100">
+                            </div>
+                            <div class="flex-column" style="width: 100px;">
+                                <label for="new-skill-cat">Category</label>
+                                <select id="new-skill-cat" class="cust-input">
+                                    <option value="frontend">Frontend</option>
+                                    <option value="backend">Backend</option>
+                                    <option value="tools">Tools</option>
+                                </select>
+                            </div>
+                            <button id="add-skill-btn" class="btn btn-sm btn-primary align-self-end"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        
+                        <div class="cust-list-header">Current Skills List</div>
+                        <ul class="cust-items-list" id="cust-skills-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Section -->
+                <div class="cust-tab-pane" id="cust-experience">
+                    <div class="panel-section-title">Add Work Experience</div>
+                    <div class="experience-manager-container">
+                        <div class="cust-form-group">
+                            <label for="exp-title">Job Title</label>
+                            <input type="text" id="exp-title" class="cust-input" placeholder="Senior Developer">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="exp-company">Company</label>
+                            <input type="text" id="exp-company" class="cust-input" placeholder="Google">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="exp-period">Period</label>
+                            <input type="text" id="exp-period" class="cust-input" placeholder="Jan 2024 - Present">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="exp-desc">Description (Use semicolons ';' to break into bullet points)</label>
+                            <textarea id="exp-desc" class="cust-input" rows="3" placeholder="Led a team; Developed React apps; Optimized DB performance"></textarea>
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="exp-tags">Skills/Tech Stack (Comma-separated)</label>
+                            <input type="text" id="exp-tags" class="cust-input" placeholder="React, Node.js, AWS">
+                        </div>
+                        <button id="add-exp-btn" class="btn btn-primary btn-block"><i class="fa-solid fa-plus"></i> Add Experience</button>
+                        
+                        <div class="cust-list-header">Current Experience List</div>
+                        <ul class="cust-items-list" id="cust-exp-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Projects Section -->
+                <div class="cust-tab-pane" id="cust-projects">
+                    <div class="panel-section-title">Add Project</div>
+                    <div class="projects-manager-container">
+                        <div class="cust-form-group">
+                            <label for="proj-title">Project Title</label>
+                            <input type="text" id="proj-title" class="cust-input" placeholder="E-commerce App">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="proj-category">Category / Filter Key</label>
+                            <select id="proj-category" class="cust-input">
+                                <option value="webapp">Web App</option>
+                                <option value="frontend">Frontend</option>
+                                <option value="uiux">UI/UX Design</option>
+                            </select>
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="proj-desc">Description</label>
+                            <textarea id="proj-desc" class="cust-input" rows="3" placeholder="A premium e-commerce shopping cart web application."></textarea>
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="proj-tags">Tech Stack (Comma-separated)</label>
+                            <input type="text" id="proj-tags" class="cust-input" placeholder="HTML, CSS, JS, LocalStorage">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="proj-demo">Live Demo Link</label>
+                            <input type="url" id="proj-demo" class="cust-input" placeholder="https://example.com">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="proj-code">Source Code Link</label>
+                            <input type="url" id="proj-code" class="cust-input" placeholder="https://github.com/username/project">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="proj-image">Project Cover Image URL (Optional)</label>
+                            <input type="text" id="proj-image" class="cust-input" placeholder="Leave empty for abstract CSS gradient cover">
+                        </div>
+                        <button id="add-proj-btn" class="btn btn-primary btn-block"><i class="fa-solid fa-plus"></i> Add Project</button>
+                        
+                        <div class="cust-list-header">Current Projects List</div>
+                        <ul class="cust-items-list" id="cust-proj-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Education Section -->
+                <div class="cust-tab-pane" id="cust-education">
+                    <div class="panel-section-title">Add Education</div>
+                    <div class="education-manager-container">
+                        <div class="cust-form-group">
+                            <label for="edu-degree">Degree / Certificate</label>
+                            <input type="text" id="edu-degree" class="cust-input" placeholder="Bachelor of Computer Science">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="edu-school">School / University / Issuer</label>
+                            <input type="text" id="edu-school" class="cust-input" placeholder="University of Technology">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="edu-period">Period / Date</label>
+                            <input type="text" id="edu-period" class="cust-input" placeholder="2020 - 2024">
+                        </div>
+                        <div class="cust-form-group">
+                            <label for="edu-details">Key Details / GPA / Score</label>
+                            <input type="text" id="edu-details" class="cust-input" placeholder="First Class Honors, GPA 3.8/4.0">
+                        </div>
+                        <button id="add-edu-btn" class="btn btn-primary btn-block"><i class="fa-solid fa-plus"></i> Add Education</button>
+                        
+                        <div class="cust-list-header">Current Education List</div>
+                        <ul class="cust-items-list" id="cust-edu-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="customizer-footer">
+            <button id="cust-reset-btn" class="btn btn-sm btn-outline"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
+            <button id="cust-export-btn" class="btn btn-sm btn-primary"><i class="fa-solid fa-file-export"></i> Export JSON</button>
+        </div>
+    </aside>
+    
+    <div id="customizer-overlay" class="panel-overlay"></div>
+
+    <!-- Success Message Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon"><i class="fa-regular fa-circle-check"></i></div>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out, Sahil. I will review your message and respond as soon as possible.</p>
+            <button class="btn btn-primary" id="success-modal-close">Close</button>
+        </div>
+    </div>
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Export Configuration Modal -->
+    <div id="export-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Exported Resume Data</h3>
+                <button class="close-btn" id="export-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p>Copy the JSON below and replace the default config in <code>script.js</code> to make these changes permanent in the code!</p>
+            <textarea id="export-json-text" class="cust-input" rows="12" readonly></textarea>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="copy-json-btn"><i class="fa-solid fa-copy"></i> Copy to Clipboard</button>
+                <button class="btn btn-primary" id="export-modal-close-btn">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
